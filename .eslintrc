@@ -9,19 +9,12 @@
     "browser": true,
     "node": true,
     "jquery": true,
-    "mocha": true
   },
   "globals": {
     "App": false,
     "_": false,
-    "expect": false,
-    "sinon": false,
+    "moment": false,
     "Backbone": false,
-    "appendFixture": false,
-    "initializeTestData": false,
-    "spyOn": false,
-    "stubOut": false,
-    "requests": false
   },
   "rules": {
     "indent": ["error", 2, { "SwitchCase": 1 }],

@@ -2,6 +2,7 @@ App.Views.ArticlesCollection = Backbone.View.extend({
   articlesFetched: 0,
   articleGroupLength: 10,
   articlesUrl: 'http://www.stellarbiotechnologies.com/media/press-releases/json',
+  loading: false,
 
   initialize: function() {
     this.loadContent();
@@ -12,18 +13,23 @@ App.Views.ArticlesCollection = Backbone.View.extend({
   },
 
   loadContent: function() {
-    $.ajax({
-      type: 'GET',
-      url: this.currentUrl(),
-      dataType: 'json',
-      crossDomain: true,
-    })
-      .done(this.handleSuccessfulArticleFetch.bind(this))
-      .fail(this.handleUnsuccessfulArticleFetch.bind(this));
+    if (!this.loading) {
+      this.loading = true;
+
+      $.ajax({
+        type: 'GET',
+        url: this.currentUrl(),
+        dataType: 'json',
+        crossDomain: true,
+      })
+        .done(this.handleSuccessfulArticleFetch.bind(this))
+        .fail(this.handleUnsuccessfulArticleFetch.bind(this));
+    }
   },
 
   handleSuccessfulArticleFetch: function(responseData) {
-    responseData.news.forEach(_.bind(this.appendArticle, this));
+    this.loading = false;
+    responseData.news.forEach(this.appendArticle.bind(this));
     this.articlesFetched += this.articleGroupLength;
     this.watchToTriggerContentLoad();
   },

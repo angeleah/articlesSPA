@@ -1,3 +1,9 @@
+body {
+  content: center;
+  width: 750px;
+  margin: 0 auto;
+}
+
 .article-list-item {
   padding-top: 1em;
   padding-bottom: 1em;

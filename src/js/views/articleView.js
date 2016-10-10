@@ -2,7 +2,6 @@ App.Views.Article = Backbone.View.extend({
   template: App.templates.article,
 
   initialize: function(options) {
-    console.log('inside article view');
     this.published = options.published;
     this.title = options.title;
     this.render();
@@ -14,7 +13,7 @@ App.Views.Article = Backbone.View.extend({
 
   templateJSON: function() {
     return {
-      published: this.published,
+      published: moment(this.published).format('LLLL'),
       title: this.title
     };
   },

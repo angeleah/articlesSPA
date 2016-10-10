@@ -1,5 +1,4 @@
 var src = './src';
-var test = './test';
 
 var browserSync = require('browser-sync');
 var concat = require('gulp-concat');
@@ -37,7 +36,6 @@ gulp.task('templates', function(){
 
 gulp.task('watch', ['serve'], function() {
   gulp.watch(src + '/templates/**', ['templates']);
-  gulp.watch([src + '/js/**/*.js', test + '/*-test.js']);
 });
 
 gulp.task('default', ['templates', 'watch']);
