@@ -1,6 +1,6 @@
 App.Views.ArticlesCollection = Backbone.View.extend({
   articlesFetched: 0,
-  articleGroupLength: 10,
+  articleGroupLength: 20,
   articlesUrl: 'http://www.stellarbiotechnologies.com/media/press-releases/json',
   loading: false,
 
