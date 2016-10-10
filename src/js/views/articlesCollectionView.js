@@ -3,9 +3,11 @@ App.Views.ArticlesCollection = Backbone.View.extend({
   articleGroupLength: 20,
   articlesUrl: 'http://www.stellarbiotechnologies.com/media/press-releases/json',
   loading: false,
+  loadDistanceThreshold: 15,
 
   initialize: function() {
     this.loadContent();
+    this.watchToTriggerContentLoad();
   },
 
   currentUrl: function() {
@@ -31,7 +33,6 @@ App.Views.ArticlesCollection = Backbone.View.extend({
     this.loading = false;
     responseData.news.forEach(this.appendArticle.bind(this));
     this.articlesFetched += this.articleGroupLength;
-    this.watchToTriggerContentLoad();
   },
 
   appendArticle: function(article) {
@@ -40,7 +41,6 @@ App.Views.ArticlesCollection = Backbone.View.extend({
   },
 
   handleUnsuccessfulArticleFetch: function(responseData) {
-    console.log("status code" + responseData.status);
     alert("We apologize for the inconvenience. There has been an error.(" + responseData.status+")");
   },
 
@@ -51,7 +51,7 @@ App.Views.ArticlesCollection = Backbone.View.extend({
   handleScroll: function() {
     var $window = $(window);
     var scrollBottom = ($(document).height() - $window.height() - $window.scrollTop());
-    if(scrollBottom <= 15) {
+    if(scrollBottom <= this.loadDistanceThreshold) {
       this.loadContent();
     }
   }
