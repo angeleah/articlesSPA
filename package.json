@@ -1,0 +1,45 @@
+{
+  "name": "infinite_scroll",
+  "version": "1.0.0",
+  "description": "A SPA that displays titles and publish dates or articles and loads more articles as the user scrolls.",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "karma"
+  },
+  "author": "Angeleah Daidone",
+  "license": "ISC",
+  "dependencies": {
+    "browser-sync": "^2.17.2",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-declare": "^0.3.0",
+    "gulp-handlebars": "^4.0.0",
+    "gulp-wrap": "^0.13.0",
+    "handlebars": "3.0.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-jquery": "^2.0.0",
+    "karma": "^1.3.0",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-handlebars-preprocessor": "^0.2.0",
+    "karma-mocha": "^1.2.0",
+    "karma-sinon": "^1.0.5",
+    "karma-sinon-chai": "^1.2.4",
+    "mocha": "^3.1.1",
+    "sinon": "^1.17.6",
+    "sinon-chai": "^2.8.0",
+    "stream-browserify": "^2.0.1"
+  }
+},
+"repository": {
+  "type": "git",
+  "url": "git@github.com:angeleah/articlesSPA.git"
+},
+"author": "ifl",
+"license": "ISC",
+"bugs": {
+  "url": "git@github.com:angeleah/articlesSPA.git/issues"
+},
+"homepage": "https://github.com/angeleah/articlesSPA"
