@@ -1,5 +1,16 @@
-.article-list {
-  height: 500px;
-  width: 500px;
-  background-color: blue;
+.article-list-item {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.date {
+  display: inline-block;
+  padding-bottom: .5em;
+  font-family: Helvetica;
+  font-size: 1em;
+}
+
+.title {
+  font-family: Helvetica;
+  font-size: 1.25em;
 }

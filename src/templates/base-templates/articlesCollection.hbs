@@ -1,3 +1,9 @@
 <div class="article-list">
-  {{ testValue }}
+  {{#each newsArticles}}
+    <div class="article-list-item">
+      <span class="date">{{ published }}</span></br>
+      <span class="title">{{ title }}</span></br>
+    </div>
+    <hr>
+  {{/each}}
 </div>
