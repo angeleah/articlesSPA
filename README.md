@@ -5,16 +5,24 @@ This SPA displays the titles and publish dates of the news articles returned fro
 Make sure you have Node/npm installed by checking ``` node -v ``` and making sure you have a node version installed. If not, get started with Node [here](https://nodejs.org/en/).
 
 Install the Gulp CLI
-``` $ npm install --g gulp-cli ```
+```sh
+npm install --g gulp-cli
+```
 
 Install the Dependencies
-``` $ npm i ``` or ``` $ npm install ```
+```sh
+npm install
+```
 
 Compile the templates
-``` gulp templates ```
+```sh
+gulp templates
+```
 
 Run the project
-``` gulp ```
+```sh
+gulp
+```
 
 ###Decisions and where I would head with this...
 #####Testing
