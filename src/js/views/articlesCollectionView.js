@@ -1,16 +1,10 @@
 App.Views.ArticlesCollection = Backbone.View.extend({
-  template: App.templates.articlesCollection,
   articlesFetched: 0,
   articleGroupLength: 10,
   articlesUrl: 'http://www.stellarbiotechnologies.com/media/press-releases/json',
 
   initialize: function() {
-    console.log('inside application view');
     this.loadContent();
-  },
-
-  render: function() {
-    this.$el.html(this.template(this.templateJSON()));
   },
 
   currentUrl: function() {
@@ -24,15 +18,19 @@ App.Views.ArticlesCollection = Backbone.View.extend({
       dataType: 'json',
       crossDomain: true,
     })
-      .done(_.bind(this.handleSuccessfulArticleFetch, this))
-      .fail(_.bind(this.handleUnsuccessfulArticleFetch, this));
+      .done(this.handleSuccessfulArticleFetch.bind(this))
+      .fail(this.handleUnsuccessfulArticleFetch.bind(this));
   },
 
   handleSuccessfulArticleFetch: function(responseData) {
-    console.log(responseData);
-    this.newsArticles = responseData.news;
-    console.log(this.newsArticles);
-    this.render();
+    responseData.news.forEach(_.bind(this.appendArticle, this));
+    this.articlesFetched += this.articleGroupLength;
+    this.watchToTriggerContentLoad();
+  },
+
+  appendArticle: function(article) {
+    var article = new App.Views.Article({ published: article.published, title: article.title });
+    this.$el.append(article.$el);
   },
 
   handleUnsuccessfulArticleFetch: function(responseData) {
@@ -40,9 +38,15 @@ App.Views.ArticlesCollection = Backbone.View.extend({
     alert("We apologize for the inconvenience. There has been an error.(" + responseData.status+")");
   },
 
-  templateJSON: function() {
-    return {
-      newsArticles: this.newsArticles,
-    };
+  watchToTriggerContentLoad: function() {
+    window.addEventListener('scroll', this.handleScroll.bind(this));
   },
+
+  handleScroll: function() {
+    var $window = $(window);
+    var scrollBottom = ($(document).height() - $window.height() - $window.scrollTop());
+    if(scrollBottom <= 15) {
+      this.loadContent();
+    }
+  }
 });
